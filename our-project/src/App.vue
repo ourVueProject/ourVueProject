@@ -1,13 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+      <v-header></v-header>
+      <div class="pages">
+        <router-view></router-view>
+      </div>
+      <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+import header from '@/components/header'
+import footer from '@/components/footer'
+
 export default {
-  name: 'app'
+    components: {
+      'v-header': header,
+      'v-footer': footer
+    }
 }
 </script>
 
