@@ -1,6 +1,6 @@
 <template>
     <div class="head displayflex">
-        <img src="../assets/logo.png">
+        <img class="logoimg" src="../assets/logo.png">
     </div>
 </template>
 
@@ -18,5 +18,9 @@ export default {}
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+}
+.logoimg {
+    width:250px;
+    height:55px;
 }
 </style>
