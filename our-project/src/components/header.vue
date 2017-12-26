@@ -1,6 +1,18 @@
 <template>
     <div class="head displayflex">
         <img class="logoimg" src="../assets/logo.png">
+        <div class="">
+            <router-link :to="{ name: 'index', params: {} }">首页</router-link>
+        </div>
+        <div class="">
+            <router-link :to="{ name: 'buycar', params: {} }">买车</router-link>
+        </div>
+        <div class="">
+            <router-link :to="{ name: 'loan', params: {} }">贷款</router-link>
+        </div>
+        <div class="">
+            <router-link :to="{ name: 'about', params: {} }">关于我们</router-link>
+        </div>
     </div>
 </template>
 
