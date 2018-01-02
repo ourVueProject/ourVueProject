@@ -1,11 +1,8 @@
-<template>
-    <div class="foot">
-        <div class="displayflex">
-            <div>版权信息</div>
-            <div>联系我们</div>
-
-        </div>
-    </div>
+<template lang="pug">
+    .foot
+        .displayflex
+            span 版权信息
+            span 联系我们
 </template>
 
 <script>
