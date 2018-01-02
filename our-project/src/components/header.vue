@@ -1,6 +1,6 @@
 <template>
     <div class="head displayflex">
-        <img class="logoimg" src="../assets/logo.png">
+        <img src="../assets/logo.png">
         <div class="">
             <router-link :to="{ name: 'index', params: {} }">首页</router-link>
         </div>
