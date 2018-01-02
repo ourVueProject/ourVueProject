@@ -50,6 +50,14 @@ module.exports = {
        loader: 'style-loader!css-loader'
       },
       {
+       test: /\.jade$/,
+       loader: "jade"
+      },
+      {
+       test: /\.pug$/,
+       loader: 'pug'
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
