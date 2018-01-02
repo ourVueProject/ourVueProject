@@ -24,15 +24,15 @@ export default {}
 <style scoped lang="scss">
 .head {
     width:100%;
+    img {
+        width:250px;
+        height:55px;
+    }
 }
 .displayflex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-}
-.logoimg {
-    width:250px;
-    height:55px;
 }
 </style>
