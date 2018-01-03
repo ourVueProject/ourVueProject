@@ -1,16 +1,53 @@
 <template>
- <div class="buycar-warrp-border">
-     
+ <div class="buycar-warrp-border displayflex">
+     <div class="buycar-item" v-for="item in carlist">
+        <img v-bind:src="'/static/'+item.productImg" alt="">
+		<p class="car-name">{{item.productName}}<br><span>{{item.productTit}}</span></p>
+		<span class="car-money">{{item.prodcutPrice}}</span>
+		<span class="disable">{{item.prodcutTwo}}</span>
+		<div class="apply-btn">
+			立即申请
+		</div>
+     </div>
  </div>
 </template>
 
 <script>
+import axios from 'axios'
 
+export default {
+    data () {
+        return{
+            carlist:[]
+        }
+    },
+    mounted:function () {
+        this.getcarlist();
+    },
+    methods:{
+        getcarlist() {
+            axios.get("/carlist").then(function(result) {
+                var res = result.data;
+                this.carlist = res.result;
+            })
+        }
+    }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .buycar-warrp-border {
-
+        .buycar-item {
+            width: 390px;
+            height: 380px;
+            border: 1px solid #d6d6d6;
+        }
+    }
+    .displayflex {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
     }
 </style>
