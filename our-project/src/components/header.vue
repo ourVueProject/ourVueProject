@@ -1,6 +1,6 @@
 <template>
     <div class="head displayflex">
-        <img class="logoimg" src="../assets/logo.png">
+        <img src="../assets/logo.png">
         <div class="">
             <router-link :to="{ name: 'index', params: {} }">首页</router-link>
         </div>
@@ -21,18 +21,18 @@ export default {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 .head {
     width:100%;
+    img {
+        width:250px;
+        height:55px;
+    }
 }
 .displayflex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-}
-.logoimg {
-    width:250px;
-    height:55px;
 }
 </style>

@@ -1,11 +1,8 @@
-<template>
-    <div class="foot">
-        <div class="displayflex">
-            <div>版权信息</div>
-            <div>联系我们</div>
-
-        </div>
-    </div>
+<template lang="pug">
+    .foot
+        .displayflex
+            span 版权信息
+            span 联系我们
 </template>
 
 <script>
@@ -13,7 +10,7 @@ export default {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 .displayflex {
     display: -webkit-box;
     display: -ms-flexbox;
