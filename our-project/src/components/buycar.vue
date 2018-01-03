@@ -1,6 +1,6 @@
 <template>
  <div class="buycar-warrp-border">
-
+     
  </div>
 </template>
 
