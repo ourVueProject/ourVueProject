@@ -1,6 +1,6 @@
 <template>
  <div class="buycar-warrp-border displayflex">
-     <div class="buycar-item" v-for="item in carlist">
+     <div class="buycar-item" v-for="item in carList">
         <img v-bind:src="'/static/'+item.productImg" alt="">
 		<p class="car-name">{{item.productName}}<br><span>{{item.productTit}}</span></p>
 		<span class="car-money">{{item.prodcutPrice}}</span>
@@ -18,7 +18,7 @@ import axios from 'axios'
 export default {
     data () {
         return{
-            carlist:[]
+            carList:[]
         }
     },
     mounted:function () {
@@ -26,9 +26,10 @@ export default {
     },
     methods:{
         getcarlist() {
-            axios.get("/carlist").then(function(result) {
-                var res = result.data;
-                this.carlist = res.result;
+            axios.get('/carslist').then(function(response) {
+                console.log(response.data);
+                //var res = result.data;
+                this.carList = response.data;
             })
         }
     }

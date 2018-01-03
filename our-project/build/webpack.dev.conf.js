@@ -38,7 +38,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
   },
   before(app) {
-      app.get('/carlist' ,function(req, res, next){
+      app.get('/carslist' ,function(req, res, next){
           res.json({
               errno: 0,
               data: carlistdata
