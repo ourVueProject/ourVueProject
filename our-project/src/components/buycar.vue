@@ -21,7 +21,9 @@ export default {
             carList:[]
         }
     },
-
+    mounted () {
+        this.getcarlist();
+    },
     methods:{
         getcarlist() {
             // this 指针漂移，this指的是自己本身，而不是全局
@@ -32,9 +34,6 @@ export default {
                 self.carList = response.data.data.result;
             })
         }
-    },
-    mounted () {
-        this.getcarlist();
     }
 }
 </script>
