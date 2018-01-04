@@ -49,5 +49,19 @@
       "prodcutTwo":"7.19",
       "prodcutImg":"car6.png"
     }
-  ]
+],
+"slideList":[
+    {
+        "clickUrl":"#",
+        "bannerimg":"banner1.png"
+    },
+    {
+        "clickUrl":"#",
+        "bannerimg":"banner3.png"
+    },
+    {
+        "clickUrl":"#",
+        "bannerimg":"banner4.png"
+    }
+]
 }

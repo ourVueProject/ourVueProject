@@ -44,6 +44,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
               data: carlistdata.result
           })
       })
+      app.get('/slideList' ,function(req, res){
+          res.json({
+              errno: 0,
+              data: carlistdata.slideList
+          })
+      })
   }
   },
   plugins: [
