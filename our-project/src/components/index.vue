@@ -71,6 +71,7 @@ export default {
         width: 100%;
         overflow: hidden;
         background-color: #fff;
+        position: relative;
     }
     .slide-ul {
         position: relative;
@@ -89,7 +90,7 @@ export default {
     .carousel-items {
       position: absolute;
       z-index: 10;
-      top: 380px;
+      bottom: 20px;
       width: 100%;
       margin: 0 auto;
       text-align: center;
