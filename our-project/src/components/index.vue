@@ -7,13 +7,6 @@
              </a>
          </li>
      </transition-group>
-     <!-- <ul>
-         <li>
-             <a href="#">
-                 <img src="" alt="">
-             </a>
-         </li>
-     </ul> -->
      <span id="prve"><</span>
      <span id="next">></span>
  </div>
