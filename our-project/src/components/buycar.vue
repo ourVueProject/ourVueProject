@@ -21,7 +21,7 @@ export default {
             carList:[]
         }
     },
-    
+
     methods:{
         getcarlist() {
             // this 指针漂移，this指的是自己本身，而不是全局
@@ -35,7 +35,7 @@ export default {
     },
     mounted () {
         this.getcarlist();
-    },
+    }
 }
 </script>
 
