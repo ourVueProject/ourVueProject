@@ -28,10 +28,10 @@ export default {
         getcarlist() {
             // this 指针漂移，this指的是自己本身，而不是全局
             let self = this;
-            axios.get('/carslist').then(function(response) {
-                console.log(response.data.data.result);
+            axios.get('/result').then(function(response) {
+                console.log(response.data.data);
                 //var res = result.data;
-                self.carList = response.data.data.result;
+                self.carList = response.data.data;
             })
         }
     }
