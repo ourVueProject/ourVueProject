@@ -28,7 +28,6 @@ export default {
         getslideList() {
             let self = this;
             axios.get('/slideList').then(function(response) {
-                //console.log(response.data.data);
                 self.slideList = response.data.data;
             })
         },
@@ -96,7 +95,6 @@ export default {
       text-align: center;
       font-size: 0;
     }
-
     .carousel-items span {
       display: inline-block;
       height: 6px;
@@ -108,6 +106,7 @@ export default {
     .carousel-items .active {
       background-color: orange;
     }
+    //动画部分
     .list-enter-to {
       transition: all 1s ease;
       transform: translateX(0);
