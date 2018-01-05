@@ -27,7 +27,7 @@ export default {
     methods: {
         getslideList() {
             let self = this;
-            axios.get('/slideList').then(function(response) {
+            axios.get('/slideList').then((response) => {
                 self.slideList = response.data.data;
             })
         },
