@@ -28,7 +28,7 @@ export default {
         getcarlist() {
             // this 指针漂移，this指的是自己本身，而不是全局
             let self = this;
-            axios.get('/result').then(function(response) {
+            axios.get('/result').then((response) => {
                 self.carList = response.data.data;
             })
         }
