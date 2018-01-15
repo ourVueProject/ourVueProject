@@ -13,11 +13,25 @@
         <div class="">
             <router-link :to="{ name: 'about', params: {} }">关于我们</router-link>
         </div>
+        <div class="" @click="login">
+            登陆／注册
+        </div>
     </div>
 </template>
 
 <script>
-export default {}
+export default {
+    data (){
+        return {
+
+        }
+    },
+    methods: {
+        login() {
+            
+        }
+    }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
