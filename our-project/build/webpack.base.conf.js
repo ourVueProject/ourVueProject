@@ -46,10 +46,6 @@ module.exports = {
           loader: 'style-loader!css-loader!sass-loader'
       },
       {
-       test: /\.css$/,
-       loader: 'style-loader!css-loader'
-      },
-      {
        test: /\.jade$/,
        loader: "jade"
       },
