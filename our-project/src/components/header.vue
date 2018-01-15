@@ -13,22 +13,34 @@
         <div class="">
             <router-link :to="{ name: 'about', params: {} }">关于我们</router-link>
         </div>
-        <div class="" @click="login">
+        <div class="" @click="loginModalFlag=true">
             登陆／注册
+        </div>
+        <div class="model" v-show="loginModalFlag">
+            <div class="model-padding">
+                <input type="text" v-model="userName" name="" value="" placeholder="用户名">
+                <input type="text" v-model="userPwd" name="" value="" @keyup.enter="login" placeholder="密码">
+                <div class="">
+                    <a href="javascript:;" class="" @click="login">登陆</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     data (){
         return {
-
+            loginModalFlag:false
         }
     },
     methods: {
         login() {
-            
+
         }
     }
 }
@@ -48,5 +60,17 @@ export default {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+}
+.model {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(153, 153, 153, 0.65);
+    z-index: 9999;
+}
+.model-padding {
+    padding: 22%;
 }
 </style>
