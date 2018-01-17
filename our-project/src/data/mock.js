@@ -1,8 +1,10 @@
 import axios from 'axios'
 import Adapter from 'axios-mock-adapter'
-import {users} from './data.js'
+import {users} from './data'
+
 //import avatarDefault from '../assets/logo.png'
 export default {
+
   init () {
     // 创建Adapter 实例
     const mock = new Adapter(axios)
