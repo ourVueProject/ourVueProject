@@ -49,7 +49,6 @@
 
 <script>
 //import {LoginUser} from '../api/api'
-import axios from 'axios'
 export default {
   // ....
   data () {
@@ -64,8 +63,8 @@ export default {
           {
             required: true,
             max: 14,
-            min: 3,
-            message: '用户名是必须的，长度为3-14位',
+            min: 7,
+            message: '用户名是必须的，长度为7-14位',
             trigger: 'blur'
           }
         ],
@@ -92,7 +91,7 @@ export default {
             password: this.LoginForm.password
           }
           // 调用axios登录接口
-          axios.post('/login',LoginParams).then(res => {
+          LoginUser(LoginParams).then(res => {
             this.logining = false
             // 根据返回的code判断是否成功
             let {code, msg, user} = res.data
@@ -109,7 +108,7 @@ export default {
               // 将返回的数据注入sessionStorage
               sessionStorage.setItem('user', JSON.stringify(user))
               // 跳转到我的信息的页面
-              this.$router.push('/buycar')
+              this.$router.push('/manger/my')
             }
           })
         } else {

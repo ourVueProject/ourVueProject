@@ -28,8 +28,9 @@ export default {
         getcarlist() {
             // this 指针漂移，this指的是自己本身，而不是全局
             let self = this;
-            axios.get('/result').then((response) => {
-                self.carList = response.data.data;
+            axios.get('https://easy-mock.com/mock/5a5dbbddd467601e4b7f2fb6/example/result').then((response) => {
+                console.log(response.data);
+                self.carList = response.data.result;
             })
         }
     }

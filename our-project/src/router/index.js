@@ -4,6 +4,8 @@ import index from '@/components/index'
 import buycar from '@/components/buycar'
 import loan from '@/components/loan'
 import about from '@/components/about'
+import login from '@/components/login'
+import regin from '@/components/regin'
 
 Vue.use(Router)
 
@@ -29,6 +31,16 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: about
+  },
+  {
+      path: '/regin',
+      name: 'regin',
+      component: regin
+  },
+  {
+      path: '/login',
+      name: 'login',
+      component: login
   }
   ]
 })

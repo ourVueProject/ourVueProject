@@ -6,6 +6,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import 'lib-flexible'
+import Mock from './data/mock'
+
+Mock.init()
 
 Vue.use(ElementUI)
 
