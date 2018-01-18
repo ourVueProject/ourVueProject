@@ -1,146 +1,117 @@
 <template>
-  <el-main>
-    <el-form
-      :model="LoginForm"
-      ref="LoginForm"
-      :rules="rule"
-      label-width="0"
-      class="login-form">
-      <h3>用户登录系统</h3>
+    <transition name="fade">
+        <div class="logins">
+            <div class="login-warrp">
+                <el-form :model="ruleForm2" status-icon :rules="rules2" size="mini" ref="ruleForm2" label-position="left" label-width="100px" class="demo-ruleForm">
+                    <el-form-item label="用户名" prop="name">
+                      <el-input v-model="ruleForm2.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="pass">
+                      <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码" prop="checkPass">
+                      <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+                    </el-form-item>
 
-      <el-form-item prop="username">
-        <el-input
-          type="text"
-          v-model="LoginForm.username"
-          placeholder="username" >
-        </el-input>
-      </el-form-item>
-
-      <el-form-item prop="password">
-        <el-input
-          type="password"
-          v-model="LoginForm.password"
-          placeholder="password" >
-        </el-input>
-      </el-form-item>
-
-      <el-form-item >
-        <el-button
-          type="danger"
-          class="submitBtn"
-          round
-          @click.native.prevent="submit"
-          :loading="logining">
-          登录
-        </el-button>
-        <el-button
-          type="primary"
-          class="resetBtn"
-          round
-          @click.native.prevent="reset">
-          重置
-        </el-button>
-        <hr>
-        <p>还没有账号，马上去<span class="to" @click="toregin">注册</span></p>
-      </el-form-item>
-    </el-form>
-  </el-main>
+                    <el-form-item>
+                      <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+                      <el-button @click="resetForm('ruleForm2')">重置</el-button>
+                    </el-form-item>
+                  </el-form>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
-//import {LoginUser} from '../api/api'
 import axios from 'axios'
+
 export default {
-  // ....
-  data () {
-    return {
-      LoginForm: {
-        username: '',
-        password: ''
+    data() {
+      var checkName = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('用户名不能为空'));
+      }else {
+          callback();
+      }
+      };
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm2.checkPass !== '') {
+            this.$refs.ruleForm2.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm2.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
+      return {
+        ruleForm2: {
+          pass: '',
+          checkPass: '',
+          name: ''
+        },
+        rules2: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+          name: [
+            { validator: checkName, trigger: 'blur' }
+          ]
+        }
+      };
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            //alert('submit!');
+            this.$router.push('/randomlist');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
-      logining: false,
-      rule: {
-        username: [
-          {
-            required: true,
-            max: 14,
-            min: 3,
-            message: '用户名是必须的，长度为3-14位',
-            trigger: 'blur'
-          }
-        ],
-        password: [
-          {
-            required: true,
-            message: '密码是必须的！',
-            trigger: 'blur'
-          }
-        ]
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
-  },
-  methods: {
-    // ...
-    submit () {
-      this.$refs.LoginForm.validate(valid => {
-        if (valid) {
-          this.logining = true
-          // console.log('开始请求后台数据，验证返回之类的操作！')
-          // 登录作为参数的用户信息
-          let LoginParams = {
-            username: this.LoginForm.username,
-            password: this.LoginForm.password
-          }
-          // 调用axios登录接口
-          axios.post('/login',LoginParams).then(res => {
-            this.logining = false
-            // 根据返回的code判断是否成功
-            let {code, msg, user} = res.data
-            if (code !== 200) {
-              this.$message({
-                type: 'error',
-                message: msg
-              })
-            } else {
-              this.$message({
-                type: 'success',
-                message: msg
-              })
-              // 将返回的数据注入sessionStorage
-              sessionStorage.setItem('user', JSON.stringify(user))
-              // 跳转到我的信息的页面
-              this.$router.push('/buycar')
-            }
-          })
-        } else {
-          console.log('submit err')
-        }
-      })
-    },
-    reset () {
-      this.$refs.LoginForm.resetFields()
-    },
-    toregin () {
-      this.$router.push('/regin')
-    }
   }
-}
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.login-form {
-  margin: 20px auto;
-  width: 310px;
-  background: #fff;
-  box-shadow: 0 0 35px #B4BCCC;
-  padding: 30px 30px 0 30px;
-  border-radius: 25px;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.submitBtn {
-  width: 65%;
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
-.to {
-  color: #67C23A;
-  cursor: pointer;
+.login-warrp {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25vh;
+}
+.logins {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 10;
 }
 </style>

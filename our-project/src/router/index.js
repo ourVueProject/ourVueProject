@@ -6,14 +6,21 @@ import loan from '@/components/loan'
 import about from '@/components/about'
 import login from '@/components/login'
 import regin from '@/components/regin'
+import randomlist from '@/components/randomlist'
+import randomdetail from '@/components/randomdetail'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+      {
+        path: '/',
+        name: 'login',
+        component: login
+    },
     {
-      path: '/',
+      path: '/index',
       name: 'index',
       component: index
   },
@@ -38,9 +45,14 @@ export default new Router({
       component: regin
   },
   {
-      path: '/login',
-      name: 'login',
-      component: login
+      path: '/randomlist',
+      name: 'randomlist',
+      component: randomlist
+  },
+  {
+      path: '/randomdetail',
+      name: 'randomdetail',
+      component: randomdetail
   }
   ]
 })
