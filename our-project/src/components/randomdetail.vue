@@ -31,7 +31,9 @@ export default {
              if(response.code = 404){
                  console.log(response.msg);
              }else {
-                 self.randomit = response.data.todos;
+                 console.log(response.randomit);
+                 self.randomit = response.data.randomit;
+
              }
 
          })

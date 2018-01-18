@@ -30,12 +30,13 @@ export default {
       });
     });
     mock.onPost('/randomitem').reply(config => {
-        let str = JSON.stringify(config);
-        console.log(str);
-        var jsonStr=str.replace(/\/|\\/g, "").replace(new RegExp("\\"+"[^\\"+""+"]*?$"), "");
-        console.log(jsonStr);
-        let id = jsonStr.data.id;
-        console.log(jsonStr.data.id);
+        console.log(config.data);
+        let {id} = JSON.parse(config.data);
+        // console.log(str.data);
+        // var jsonStr=str.replace("\"", "");
+        // console.log(jsonStr);
+        // let id = jsonStr.data.id;
+        // console.log(jsonStr.data.data);
         //console.log(id);
         let mockrandom = random.map(rd => { // 重组 random数组，变成我们想要的数据
           return {
@@ -50,6 +51,7 @@ export default {
                 let hasrandom = mockrandom.some(element => {
                     if(element.randomid === id) {
                         randomit = JSON.parse(JSON.stringify(element));
+                        console.log(randomit);
                         //randomitem.
                         return true
                     }else {
