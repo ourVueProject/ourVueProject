@@ -1,9 +1,9 @@
 <template>
     <transition name="fade">
       <div class="randomdetail">
-          <div class="">
+          <!-- <div class="">
               {{$route.params.id}}
-          </div>
+          </div> -->
           <div class="" v-for="item in randomit">
               <h4 class="tit">{{item.randomtit}}</h4>
               <p class="cont">{{item.randomcont}}</p>
@@ -28,14 +28,8 @@ export default {
              id: this.$route.params.id
          };
          axios.post('/randomitem',param).then((response)=>{
-             if(response.code = 404){
-                 console.log(response.msg);
-             }else {
-                 console.log(response.randomit);
-                 self.randomit = response.data.randomit;
-
-             }
-
+                 console.log(response.data);
+                 self.randomit = response.data;
          })
      }
  },
@@ -64,5 +58,15 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.tit {
+    font-size: 18px;
+    font-weight: bold;
+}
+.cont {
+    text-align: left;
+    text-indent: 2em;
+    margin: 10px 0;
+    line-height: 1.3;
 }
 </style>
